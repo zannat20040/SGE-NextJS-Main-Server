@@ -11,6 +11,8 @@ const createBlog = async (req, res) => {
     img,
     description,
     category,
+    pageTitle,
+    routeName,
   } = req.body;
 
   try {
@@ -24,6 +26,8 @@ const createBlog = async (req, res) => {
       img,
       description,
       category,
+      pageTitle,
+      routeName,
     });
     const savedBlog = await newBlog.save();
 

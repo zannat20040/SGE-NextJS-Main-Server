@@ -46,6 +46,18 @@ const BlogSchema = new mongoose.Schema(
       type: String,
       required: [true, "Category is required"],
     },
+    pageTitle: {
+      type: String,
+      required: [true, "Page title is required"],
+      trim: true,
+      maxlength: [255, "Page title cannot exceed 255 characters"],
+    },
+    routeName: {
+      type: String,
+      required: [true, "Route name is required"],
+      trim: true,
+      maxlength: [255, "Route name cannot exceed 255 characters"],
+    },
   },
 );
 
