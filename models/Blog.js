@@ -10,7 +10,7 @@ const BlogSchema = new mongoose.Schema(
     },
     date: {
       type: Date,
-      default: Date.now, // Sets the default value to the current date
+      default: Date.now, 
     },
     createdBy: {
       type: String,
@@ -30,7 +30,6 @@ const BlogSchema = new mongoose.Schema(
     img: {
       type: String,
       required: [true, "Image URL is required"],
-      // Custom validation for image URL format
       validate: {
         validator: function (v) {
           return /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/.test(v); // Checks for valid image formats
@@ -46,12 +45,8 @@ const BlogSchema = new mongoose.Schema(
     category: {
       type: String,
       required: [true, "Category is required"],
-      // You can include specific categories here, but for now, no validation
     },
   },
-  {
-    timestamps: true, // Automatically adds `createdAt` and `updatedAt` fields
-  }
 );
 
 const Blog = mongoose.model("Blog", BlogSchema);

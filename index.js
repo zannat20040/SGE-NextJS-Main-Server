@@ -45,7 +45,7 @@ const enquire = require("./controllers/enquire");
 const apply = require("./controllers/apply");
 const studentRegistrationRoute = require("./routes/studentRegistration");
 const destination = require("./controllers/destination");
-const createBlog = require("./controllers/createBlog");
+const blogRoute = require("./routes/blogRoute");
 
 // Form API to handle subject, email, and enquire data
 app.post("/enquire", enquire);
@@ -53,7 +53,8 @@ app.post("/enquire", enquire);
 app.post("/apply", apply);
 // From
 app.post("/destination", destination);
-app.post("/createBlog", createBlog);
+// app.post("/createBlog", createBlog);
+app.use("/blog", blogRoute);
 
 app.use("/studentRegistration", studentRegistrationRoute);
 app.listen(port, () => {
