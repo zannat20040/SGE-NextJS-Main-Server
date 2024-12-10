@@ -1,12 +1,12 @@
 const Blog = require("../models/Blog");
-// Controller to handle getting a single blog post by ID
 
-const getBlogById = async (req, res) => {
-  const { id } = req.params; // Get blog ID from request parameters
+// Controller to handle getting a single blog post by slug
+const getBlogBySlug = async (req, res) => {
+  const { slug } = req.params; // Get blog slug from request parameters
 
   try {
-    // Fetch the blog post by ID
-    const blog = await Blog.findById(id);
+    // Fetch the blog post by slug
+    const blog = await Blog.findOne({ routeName: slug });
 
     // Check if the blog post exists
     if (!blog) {
@@ -34,4 +34,4 @@ const getBlogById = async (req, res) => {
   }
 };
 
-module.exports = getBlogById;
+module.exports = getBlogBySlug;

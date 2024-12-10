@@ -6,6 +6,6 @@ const getAllBlogs = require("../controllers/getAllBlogs");
 
 blogRoute.post("/createBlog", createBlog);
 blogRoute.get("/getAllBlogs", getAllBlogs);
-blogRoute.get("/getBlogById/:id", getBlogById);
+blogRoute.get("/getBlogBySlug/:slug", getBlogById);
 
 module.exports = blogRoute;

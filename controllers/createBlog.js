@@ -12,11 +12,26 @@ const createBlog = async (req, res) => {
     description,
     category,
     pageTitle,
-    routeName,
+    url,
+    metaDescription
   } = req.body;
 
+  const data = req.body
+
+  const normalizedRouteName = url.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
   try {
-    // Create and save the new blog post
+    // Check if the normalized routeName already exists in the database
+    const existingBlog = await Blog.findOne({ url: normalizedRouteName });
+
+    if (existingBlog) {
+      return res.status(400).json({
+        success: false,
+        message: "Route name already exists. Please choose a different one.",
+      });
+    }
+
+    // Create and save the new blog post with the normalized routeName
     const newBlog = new Blog({
       title,
       date,
@@ -27,9 +42,12 @@ const createBlog = async (req, res) => {
       description,
       category,
       pageTitle,
-      routeName,
+      metaDescription,
+      url: normalizedRouteName,
     });
-    const savedBlog = await newBlog.save();
+
+    // Save the blog to the database
+    await newBlog.save();
 
     // Send success response
     return res.status(201).json({
