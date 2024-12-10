@@ -16,7 +16,6 @@ const createBlog = async (req, res) => {
     metaDescription
   } = req.body;
 
-  const data = req.body
 
   const normalizedRouteName = url.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
