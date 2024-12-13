@@ -44,16 +44,15 @@ app.get("/", (req, res) => {
 const enquire = require("./controllers/enquire");
 const apply = require("./controllers/apply");
 const studentRegistrationRoute = require("./routes/studentRegistration");
-const destination = require("./controllers/destination");
 const blogRoute = require("./routes/blogRoute");
 const destinationRoute = require("./routes/destinationRoute");
+
 
 // Form API to handle subject, email, and enquire data
 app.post("/enquire", enquire);
 //Form API to handle name, email, phoneNumber, StudyDestination, StudyYear, StudyIntake
 app.post("/apply", apply);
 // From
-app.post("/destination", destination);
 // app.post("/createBlog", createBlog);
 app.use("/blog", blogRoute);
 app.use("/destination", destinationRoute);
