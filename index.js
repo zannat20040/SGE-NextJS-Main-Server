@@ -47,7 +47,6 @@ const studentRegistrationRoute = require("./routes/studentRegistration");
 const blogRoute = require("./routes/blogRoute");
 const destinationRoute = require("./routes/destinationRoute");
 
-
 // Form API to handle subject, email, and enquire data
 app.post("/enquire", enquire);
 //Form API to handle name, email, phoneNumber, StudyDestination, StudyYear, StudyIntake
