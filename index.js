@@ -19,6 +19,8 @@ const corsOptions = {
     "http://next.studyuk.today",
     "https://sge-next-server.vercel.app",
     "http://sge-next-server.vercel.app",
+    "https://sge-client-next.vercel.app",
+    "http://sge-client-next.vercel.app"
   ],
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",

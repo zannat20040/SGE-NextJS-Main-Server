@@ -62,6 +62,7 @@ const createBlog = async (req, res) => {
         .json({ success: false, message: "Validation error", errors });
     }
 
+
     // Handle other errors
     return res.status(500).json({
       success: false,
