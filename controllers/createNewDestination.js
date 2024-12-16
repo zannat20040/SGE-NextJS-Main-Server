@@ -3,11 +3,13 @@ const Destination = require("../models/Destination");
 // Controller to handle creating a new destination
 const createNewDestination = async (req, res) => {
   const {
-    applyDocument,
+    applyDocumentDescription,
+    applyDocumentList,
     destinationDescription,
     destinationName,
     destinationTitle,
-    documentRequirement,
+    documentDescription,
+    documentList,
     examRequirement,
     expertNumber,
     faq,
@@ -15,7 +17,8 @@ const createNewDestination = async (req, res) => {
     pageTitle,
     popularIn,
     quickFacts,
-    statement,
+    statementDescription,
+    statementList,
     studyRequirement,
     topUniversity,
     url,
@@ -23,12 +26,9 @@ const createNewDestination = async (req, res) => {
     whyStudyTitle
   } = req.body;
 
-  // Normalize the URL to create a slug-friendly destination URL
-  const normalizedUrl = url.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-
   try {
-    // Check if the normalized URL already exists in the database
-    const existingDestination = await Destination.findOne({ url: normalizedUrl });
+    // Check if the URL already exists in the database
+    const existingDestination = await Destination.findOne({ url });
 
     if (existingDestination) {
       return res.status(400).json({
@@ -37,13 +37,15 @@ const createNewDestination = async (req, res) => {
       });
     }
 
-    // Create and save the new destination with the normalized URL
+    // Create and save the new destination with the provided URL
     const newDestination = new Destination({
-      applyDocument,
+      applyDocumentDescription,
+      applyDocumentList,
       destinationDescription,
       destinationName,
       destinationTitle,
-      documentRequirement,
+      documentDescription,
+      documentList,
       examRequirement,
       expertNumber,
       faq,
@@ -51,10 +53,11 @@ const createNewDestination = async (req, res) => {
       pageTitle,
       popularIn,
       quickFacts,
-      statement,
+      statementDescription,
+      statementList,
       studyRequirement,
       topUniversity,
-      url: normalizedUrl,
+      url, // Using the provided URL directly
       whyStudyDescription,
       whyStudyTitle
     });

@@ -2,44 +2,52 @@ const mongoose = require('mongoose');
 
 // Define Schema for destination data
 const destinationSchema = new mongoose.Schema({
-  applyDocument: { type: String, required: true },
-  destinationDescription: { type: String, required: true },
-  destinationName: { type: String, required: true },
   destinationTitle: { type: String, required: true },
-  documentRequirement: { type: String, required: true },
-  examRequirement: [
-    {
-      examName: { type: String },
-      examDetails: { type: String }
-    }
-  ],
-  expertNumber: { type: String, required: true },
-  faq: [
-    {
-      question: { type: String },
-      answer: { type: String }
-    }
-  ],
-  meta: { type: String, required: true },
-  pageTitle: { type: String, required: true },
-  popularIn: [String],
-  quickFacts: [String],
-  statement: { type: String, required: true },
-  studyRequirement: [
-    {
-      requirement: { type: String },
-      details: { type: String }
-    }
-  ],
+  destinationDescription: { type: String, required: true },
+  whyStudyTitle: { type: String, required: true },
+  whyStudyDescription: { type: String, required: true },
+  quickFacts: { type: [String], required: true },
+  popularIn: { type: [String], required: true },
+  
   topUniversity: [
     {
-      universityName: { type: String },
-      universityDetails: { type: String }
+      img: { type: String, required: false }, // Image URL or path
+      name: { type: String, required: true },  // University Name
+      desc: { type: String, required: false }, // University Description
+      subtitle: { type: String, required: false }, // Subtitle or additional details
+      location: { type: String, required: false } // Location of the university
     }
   ],
+
+  examRequirement: [
+    {
+      title: { type: String, required: true },
+      description: { type: [String], required: true } // Array of strings for details
+    }
+  ],
+
+  documentDescription: { type: String, required: true },
+  documentList: { type: [String], required: true },
+
+  statementDescription: { type: String, required: true },
+  statementList: { type: [String], required: true },
+
+  applyDocumentDescription: { type: String, required: true },
+  applyDocumentList: { type: [String], required: true },
+
+  faq: [
+    {
+      question: { type: String, required: true },
+      answer: { type: String, required: true }
+    }
+  ],
+
+  expertNumber: { type: String, required: true },
+
+  destinationName: { type: String, required: true },
   url: { type: String, required: true },
-  whyStudyDescription: { type: String, required: true },
-  whyStudyTitle: { type: String, required: true }
+  pageTitle: { type: String, required: true },
+  meta: { type: String, required: true }
 });
 
 // Create Model
