@@ -8,7 +8,9 @@ const destinationSchema = new mongoose.Schema({
   whyStudyDescription: { type: String, required: true },
   quickFacts: { type: [String], required: true },
   popularIn: { type: [String], required: true },
-  
+  destinationFlag: { type: String, required: false }, // Image URL or path
+  destinationName: { type: String, required: true },
+
   topUniversity: [
     {
       img: { type: String, required: false }, // Image URL or path
@@ -44,10 +46,10 @@ const destinationSchema = new mongoose.Schema({
 
   expertNumber: { type: String, required: true },
 
-  destinationName: { type: String, required: true },
   url: { type: String, required: true },
   pageTitle: { type: String, required: true },
   meta: { type: String, required: true }
+
 });
 
 // Create Model

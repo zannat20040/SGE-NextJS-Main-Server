@@ -23,7 +23,7 @@ const createNewDestination = async (req, res) => {
     topUniversity,
     url,
     whyStudyDescription,
-    whyStudyTitle
+    whyStudyTitle, destinationFlag
   } = req.body;
 
   try {
@@ -59,7 +59,8 @@ const createNewDestination = async (req, res) => {
       topUniversity,
       url, // Using the provided URL directly
       whyStudyDescription,
-      whyStudyTitle
+      whyStudyTitle,
+      destinationFlag
     });
 
     // Save the destination to the database
