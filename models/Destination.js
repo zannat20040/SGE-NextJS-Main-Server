@@ -8,6 +8,23 @@ const destinationSchema = new mongoose.Schema({
   whyStudyDescription: { type: String, required: true },
   quickFacts: { type: [String], required: true },
   popularIn: { type: [String], required: true },
+
+  programDuration: [
+    {
+      qualification: { type: String, required: false }, // Qualification level
+      duration: { type: String, required: false }, // Duration of the program
+      gir: { type: String, required: false }, // General information or requirements
+    },
+  ],
+  costOfStudy: [
+    {
+      degree: { type: String, required: false }, // Degree type
+      cost: { type: String, required: false }, // Cost of the degree
+    },
+  ],  
+  academicIntake: { type: [String], required: false }, // New field for academic intake
+  preparationTime: { type: String, required: false }, // New field for preparation time
+ 
   destinationFlag: { type: String, required: false }, // Image URL or path
   destinationName: { type: String, required: true },
 
@@ -29,6 +46,13 @@ const destinationSchema = new mongoose.Schema({
       internationalFees: { type: String, required: false }, // International fees
       internationalStudent: { type: String, required: false }, // Percentage or count of international students
       courseList: { type: [String], required: false }, // List of courses offered
+    },
+  ],
+  studyRequirement: [
+    {
+      title: { type: String, required: true }, // Title of the requirement
+      description: { type: String, required: true }, // Description of the requirement
+      img: { type: String, required: false }, // Optional image URL or path
     },
   ],
   examRequirement: [
@@ -55,15 +79,6 @@ const destinationSchema = new mongoose.Schema({
   ],
 
   expertNumber: { type: String, required: true },
-
-  // Add new studyRequirement field
-  studyRequirement: [
-    {
-      title: { type: String, required: true }, // Title of the requirement
-      description: { type: String, required: true }, // Description of the requirement
-      img: { type: String, required: false }, // Optional image URL or path
-    },
-  ],
 
   url: { type: String, required: true },
   pageTitle: { type: String, required: true },
