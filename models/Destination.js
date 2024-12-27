@@ -22,7 +22,12 @@ const destinationSchema = new mongoose.Schema({
       cost: { type: String, required: false }, // Cost of the degree
     },
   ],  
-  academicIntake: { type: [String], required: false }, // New field for academic intake
+  academicIntake: [
+    {
+      qualification:  { type: String, required: false }, // Degree type
+      duration: { type: String, required: false }, // Cost of the degree
+    },
+  ], // New field for academic intake
   preparationTime: { type: String, required: false }, // New field for preparation time
  
   destinationFlag: { type: String, required: false }, // Image URL or path

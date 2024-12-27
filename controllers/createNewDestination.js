@@ -23,7 +23,12 @@ const createNewDestination = async (req, res) => {
     topUniversity,
     url,
     whyStudyDescription,
-    whyStudyTitle, destinationFlag
+    whyStudyTitle,
+    destinationFlag,
+    preparationTime,
+    academicIntake,
+    costOfStudy,
+    programDuration,
   } = req.body;
 
   try {
@@ -33,7 +38,8 @@ const createNewDestination = async (req, res) => {
     if (existingDestination) {
       return res.status(400).json({
         success: false,
-        message: "Destination with this URL already exists. Please choose a different one.",
+        message:
+          "Destination with this URL already exists. Please choose a different one.",
       });
     }
 
@@ -60,7 +66,11 @@ const createNewDestination = async (req, res) => {
       url, // Using the provided URL directly
       whyStudyDescription,
       whyStudyTitle,
-      destinationFlag
+      destinationFlag,
+      preparationTime,
+      academicIntake,
+      costOfStudy,
+      programDuration,
     });
 
     // Save the destination to the database
