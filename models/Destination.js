@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Define Schema for destination data
 const destinationSchema = new mongoose.Schema({
@@ -14,18 +14,28 @@ const destinationSchema = new mongoose.Schema({
   topUniversity: [
     {
       img: { type: String, required: false }, // Image URL or path
-      name: { type: String, required: true },  // University Name
+      name: { type: String, required: true }, // University Name
       desc: { type: String, required: false }, // University Description
       subtitle: { type: String, required: false }, // Subtitle or additional details
-      location: { type: String, required: false } // Location of the university
-    }
+      location: { type: String, required: false }, // Location of the university
+      rank: { type: String, required: false }, // University rank
+      established: { type: String, required: false }, // Year of establishment
+      history: { type: String, required: false }, // Historical details
+      achievement: { type: String, required: false }, // Achievements
+      service: { type: String, required: false }, // Services offered
+      faculty: { type: String, required: false }, // Faculty details
+      accomodation: { type: String, required: false }, // Accommodation details
+      fees: { type: String, required: false }, // Fees
+      internationalFees: { type: String, required: false }, // International fees
+      internationalStudent: { type: String, required: false }, // Percentage or count of international students
+      courseList: { type: [String], required: false }, // List of courses offered
+    },
   ],
-
   examRequirement: [
     {
       title: { type: String, required: true },
-      description: { type: [String], required: true } // Array of strings for details
-    }
+      description: { type: [String], required: true }, // Array of strings for details
+    },
   ],
 
   documentDescription: { type: String, required: true },
@@ -40,19 +50,27 @@ const destinationSchema = new mongoose.Schema({
   faq: [
     {
       question: { type: String, required: true },
-      answer: { type: String, required: true }
-    }
+      answer: { type: String, required: true },
+    },
   ],
 
   expertNumber: { type: String, required: true },
 
+  // Add new studyRequirement field
+  studyRequirement: [
+    {
+      title: { type: String, required: true }, // Title of the requirement
+      description: { type: String, required: true }, // Description of the requirement
+      img: { type: String, required: false }, // Optional image URL or path
+    },
+  ],
+
   url: { type: String, required: true },
   pageTitle: { type: String, required: true },
-  meta: { type: String, required: true }
-
+  meta: { type: String, required: true },
 });
 
 // Create Model
-const Destination = mongoose.model('Destination', destinationSchema);
+const Destination = mongoose.model("Destination", destinationSchema);
 
 module.exports = Destination;
