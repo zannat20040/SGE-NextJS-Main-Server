@@ -7,7 +7,6 @@ const getBlogBySlug = async (req, res) => {
   try {
     // Fetch the blog post by slug
     const blog = await Blog.findOne({ url: slug });
-    // console.log('blog--------> ',slug)
 
     // Check if the blog post exists
     if (!blog) {

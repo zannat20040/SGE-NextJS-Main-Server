@@ -17,11 +17,11 @@ const createBlog = async (req, res) => {
   } = req.body;
 
 
-  const normalizedRouteName = url.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  // const normalizedRouteName = url.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
   try {
     // Check if the normalized routeName already exists in the database
-    const existingBlog = await Blog.findOne({ url: normalizedRouteName });
+    const existingBlog = await Blog.findOne({ url: url });
 
     if (existingBlog) {
       return res.status(400).json({
@@ -42,7 +42,7 @@ const createBlog = async (req, res) => {
       category,
       pageTitle,
       metaDescription,
-      url: normalizedRouteName,
+      url,
     });
 
     // Save the blog to the database
