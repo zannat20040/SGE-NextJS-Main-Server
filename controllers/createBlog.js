@@ -13,9 +13,8 @@ const createBlog = async (req, res) => {
     category,
     pageTitle,
     url,
-    metaDescription
+    metaDescription,
   } = req.body;
-
 
   // const normalizedRouteName = url.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
@@ -61,7 +60,6 @@ const createBlog = async (req, res) => {
         .status(400)
         .json({ success: false, message: "Validation error", errors });
     }
-
 
     // Handle other errors
     return res.status(500).json({
