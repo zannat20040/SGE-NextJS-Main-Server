@@ -36,9 +36,10 @@ const editDestination = async (req, res) => {
     const currentDestination = await Destination.findOne({ url: slug });
 
     if (!currentDestination) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Destination not found." });
+      return res.status(404).json({
+        success: false,
+        message: "Destination not found.",
+      });
     }
 
     // Check if the new URL already exists and is not the current destination's URL
@@ -87,18 +88,35 @@ const editDestination = async (req, res) => {
     );
 
     if (!updatedDestination) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Destination not found." });
+      return res.status(404).json({
+        success: false,
+        message: "Destination not found.",
+      });
     }
 
-    res.status(200).json({ success: true, data: updatedDestination });
+    res.status(200).json({
+      success: true,
+      data: updatedDestination,
+    });
   } catch (error) {
     console.error("Error updating destination:", error);
+
+    // Check if it's a Mongoose validation error
+    if (error.name === "ValidationError") {
+      // Extract validation error messages
+      const errorMessages = Object.values(error.errors).map(err => err.message);
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed.",
+        errors: errorMessages, // Send the validation error messages to the frontend
+      });
+    }
+
+    // Handle other errors (like server errors, etc.)
     res.status(500).json({
       success: false,
       message: "Failed to update destination.",
-      error,
+      error: error.message,
     });
   }
 };
